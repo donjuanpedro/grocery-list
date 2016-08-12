@@ -1,6 +1,8 @@
-const ItemModel = require('../models/TaskModel.js');
+const express = require('express');
+const router = express.Router();
+const ItemModel = require('../models/ItemModel.js');
 
-app.get('/', (req, res, next) => {
+router.get('/', (req, res, next) => {
     // Here we are asking mongoose to find TaskModels,
     // we are not passing any specifice attributes, such
     // as an id, so mongoose will find all tasks.
@@ -13,15 +15,18 @@ app.get('/', (req, res, next) => {
   });
 });
 
-app.post('/items', (req, res, next) => {
+router.post('/', (req, res, next) => {
+  const item = req.body.item;
+
   var item = new ItemModel({
         text : req.body.text
   });
 
-  task.save((err, item) => {
+  model.save((err, item) => {
+
         // Inserts are run asynchronously.
         // So we have to pass in a callback to be ran when the insert is finished
-    res.redirect('/');
+    res.redirect('/items');
   });
 });
 

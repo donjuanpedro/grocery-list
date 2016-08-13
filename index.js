@@ -20,8 +20,8 @@ app.use('/', index);
 app.use('/items', items);
 
 
-app.get('/names', (req, res) => {
-  res.render('index.ejs', { names });
+app.get('/items', (req, res) => {
+  res.render('index.ejs', { items });
 });
 
 const server = http.createServer(app);

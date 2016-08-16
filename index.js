@@ -27,6 +27,16 @@ app.get('/items', (req, res, next) => {
   });
 });
 
+app.post('/items', (req, res, next) => {
+  var item = new ItemModel({
+    text: req.body.text
+  });
+
+  item.save((err, task) => {
+    res.redirect('/');
+  });
+});
+
 
 const server = http.createServer(app);
 const port = 3000;

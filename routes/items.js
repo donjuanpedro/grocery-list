@@ -1,18 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const item = {
+const Item = {
   name:[],
   quantity:0
 };
 
 router.get('/', function(req, res, next) {
-  res.render('index.ejs', { item: [] });
+  res.render('index.ejs', { Item });
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', function(req, res, next) {
   console.log(req.body.item);
-  res.redirect('/items');
+  Item["name"].push(Item["text"]);
+  Item["quantity"].push(Item[idx]);
+  res.redirect('/index');
 });
 
 module.exports = router;

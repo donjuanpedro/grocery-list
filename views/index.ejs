@@ -5,16 +5,16 @@
         <title>Grocery List</title>
     </head>
 <body>
-  <form action="/items" method="post">
-      <input type="text">
-      <input type="submit" value="+ Add item">
+  <form action="/items" method="POST">
+      <input type="text" name="item">
+      <input type="submit" value="+ Add Item">
   </form>
 
   <ul>
       <% for (idx in item) { %>
       <li><%= item[idx]['text'] %></li>
       <% } %>
-    </ul>
+  </ul>
 
 </body>
 </html>

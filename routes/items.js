@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  const item = req.body.item;
+  const item = req.body.text;
   const model = new ItemModel({
     text: item
   });

@@ -2,10 +2,12 @@ const http = require('http');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+
+//Routes
 const index = require('./routes/index');
 const items = require('./routes/items');
+
 const mongoose = require('mongoose');
-const ItemModel = require('./models/ItemModel.js');
 
 const app = express();
 
@@ -20,21 +22,7 @@ app.use('/', index);
 app.use('/items', items);
 
 app.get('/items', (req, res, next) => {
-  ItemModel.find((err, tasks)  => {
-    res.render('index', {
-      items: items
-    });
-  });
-});
-
-app.post('/items', (req, res, next) => {
-  var item = new ItemModel({
-    text: req.body.text
-  });
-
-  item.save((err, item) => {
-    res.redirect('/');
-  });
+    res.render('index', { items });
 });
 
 

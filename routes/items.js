@@ -3,10 +3,6 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const ItemModel = require('../models/ItemModel.js');
 
-const Item = {
-  name: [],
-  quantity: 0
-}
 
 router.get('/', function(req, res, next) {
   ItemModel.find((err, items) => {
@@ -15,10 +11,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  const item = new ItemModel({
-    text: req.body.item
+  const item = req.body.item;
+  const model = new ItemModel({
+    text: item
   });
-  item.save((err, item) => {
+  model.save((err, item) => {
     res.redirect('/');
   });
 });

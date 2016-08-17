@@ -6,15 +6,15 @@
     </head>
 <body>
   <form action="/items" method="POST">
-      <input type="text" name="item">
+      <input type="text" name="name">
       <input type="number" name="quantity">
-      <input type="submit" value="+ Add Item">
+      <input type="submit" value="+ Add Items">
   </form>
 
   <ul>
-    <% for (idx in items) { %>
-    <li><%= items[idx]['text']  %></li>
-    <% } %>
+    <% items.forEach((item) => { %>
+    <li><%= item.text %></li>
+    <% }) %>
   </ul>
 
 </body>

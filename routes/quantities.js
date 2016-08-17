@@ -1,24 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const ItemModel = require('../models/ItemModel.js');
-
-const Item = {
-  name: [],
-  quantity: 0
-}
+const QuantityModel = require('../models/QuantityModel.js');
 
 router.get('/', function(req, res, next) {
-  ItemModel.find((err, items) => {
-    res.render('index.ejs', { items });
+  QuantityModel.find((err, quantity) => {
+    res.render('index.ejs', { quantity });
   });
 });
 
 router.post('/', function(req, res, next) {
-  const item = new ItemModel({
-    text: req.body.item
+  const quantity = new QuantityModel({
+    number: req.body.quantity
   });
-  item.save((err, item) => {
+  quantity.save((err, quantity) => {
     res.redirect('/');
   });
 });

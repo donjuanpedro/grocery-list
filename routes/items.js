@@ -11,10 +11,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  console.log(req.body.item);
-  Item["name"].push(Item["text"]);
-  Item["quantity"].push(Item[idx]);
-  res.redirect('/index');
+  const item = req.body.text;
+  Item["name"].push(item);
+  res.redirect('/items');
 });
 
 module.exports = router;

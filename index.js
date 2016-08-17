@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
 const http = require('http');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const items = require('./routes/items');
+const mongoose = require('mongoose');
 const ItemModel = require('./models/ItemModel.js');
 
 const app = express();
@@ -21,7 +21,7 @@ app.use('/items', items);
 
 app.get('/items', (req, res, next) => {
   ItemModel.find((err, tasks)  => {
-    res.render('index.ejs', {
+    res.render('index', {
       items: items
     });
   });
@@ -32,7 +32,7 @@ app.post('/items', (req, res, next) => {
     text: req.body.text
   });
 
-  item.save((err, task) => {
+  item.save((err, item) => {
     res.redirect('/');
   });
 });

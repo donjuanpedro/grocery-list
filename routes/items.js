@@ -11,11 +11,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  const item = req.body.text;
-  const model = new ItemModel({
-    text: item
+  console.log(req.body);
+  const item = new ItemModel({
+    name: req.body.name,
+    quantity: Number(req.body.quantity)
   });
-  model.save((err, item) => {
+  item.save((err, item) => {
     res.redirect('/');
   });
 });
